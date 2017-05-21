@@ -1,8 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
 
-from __future__ import print_function
 
-from api import OJ_Break
+
+from .api import OJ_Break
 
 # Test code from command line with user API key (python oj_break/tests.py api_key)
 if __name__ == '__main__':
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 		func_name = None
 		
 		try:
-			func_name = func_in.func_name
+			func_name = func_in.__name__
 		except:
 			func_name = func_in.__name__
 		

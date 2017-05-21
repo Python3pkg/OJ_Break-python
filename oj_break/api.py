@@ -8,8 +8,8 @@ try:
 	import urllib.request as urllib2
 	from urllib.parse import urlencode
 except ImportError:
-	import urllib2
-	from urllib import urlencode
+	import urllib.request, urllib.error, urllib.parse
+	from urllib.parse import urlencode
 
 # OJ_Break class
 class OJ_Break(object):
@@ -323,8 +323,8 @@ class OJ_Break(object):
 		api_parameters = urlencode(api_parameters)
 		encoded_api_params = api_parameters.encode('utf-8')
 		
-		db_req = urllib2.Request('http://xbiod.osu.edu/OJ_Break/' + api_call, encoded_api_params)
-		db_resp = urllib2.urlopen(db_req)
+		db_req = urllib.request.Request('http://xbiod.osu.edu/OJ_Break/' + api_call, encoded_api_params)
+		db_resp = urllib.request.urlopen(db_req)
 		
 		json_resp = db_resp.read()
 		json_resp = json_resp.decode('utf-8')
